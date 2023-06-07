@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { CartComponent } from './components/cart/cart.component';
 //import { GuardService } from './services/guardservice';
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'rentals', component: RentalComponent },
   { path: 'rentals/add', component: RentalAddComponent, canActivate:[LoginGuard] },
   { path: 'payments/pay', component: PayComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];

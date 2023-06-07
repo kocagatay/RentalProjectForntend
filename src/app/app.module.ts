@@ -32,6 +32,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 //import { GuardService } from './services/guardservice';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/register/register.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RegisterComponent } from './components/register/register.component';
     ColorAddComponent,
     CarEditComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CartComponent
     
   ],
   imports: [
