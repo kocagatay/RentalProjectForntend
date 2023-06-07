@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="">
+      <div class="">
+        <h1 class="display-3">Update Car</h1>
+      </div>
+      <form [formGroup]="carUpdateForm">
+        <div class="row">
+          <div class="col-lg-3 col-sm-12">
+            <div class="mb-3">
+              <label for="brandId" class="form-label">Select Brand</label>
+              <select id="brandId" class="form-select" formControlName="brandId">
+                <option value="" disabled selected>Select Brand</option>
+                <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
+                  {{ brand.brandName }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-12">
+            <div class="mb-3">
+              <label for="colorId" class="form-label">Select Color</label>
+              <select
+                id="colorId"
+                formControlName="colorId"
+                class="form-select"
+              >
+              <option value="" disabled selected>Select Color</option>
+                <option *ngFor="let color of colors" [ngValue]="color.colorId">
+                  {{ color.colorName }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+
+          
+          <!-- <div class="col-lg-3 col-sm-12">
+            <div class="mb-3">
+              <label for="engineId" class="form-label">Select Engine</label>
+              <select
+              id="engineId"
+              formControlName="engineId"
+              class="form-select"
+              >
+              
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-12">
+            <div class="mb-3">
+              <label for="fuelId" class="form-label">Select Engine</label>
+              <select
+                id="fuelId"
+                formControlName="fuelId"
+                class="form-select"
+              >
+                
+              </select>
+            </div>
+          </div> -->
+
+
+
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="modelYear" class="form-label">Model Year</label>
+              <input
+                id="modelYear"
+                type="number"
+                class="form-control"
+                placeholder="Enter model year"
+                formControlName="modelYear"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="dailyPrice" class="form-label">Daily Price</label>
+            <div class="input-group md-3">
+              <span class="input-group-text">₺</span>
+              <input
+                id="dailyPrice"
+                type="number"
+                class="form-control"
+                placeholder="Enter daily price"
+                formControlName="dailyPrice"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            id="description"
+            type="text"
+            class="form-control"
+            placeholder="Enter a description"
+            formControlName="description"
+            rows="3"
+          ></textarea>
+        </div>
+      </form>
+      <div class="">
+        <div class="btn-group float-end" role="group" aria-label="Button Group">
+          <button (click)="update()" class="btn btn-success">
+            Update Car
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

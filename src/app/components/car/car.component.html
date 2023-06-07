@@ -1,0 +1,139 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+
+
+<div *ngIf="carFilterText.length > 2">
+  <!-- ngif şu satırın bir şey yokken görünmemesini sağlıyor. lenght>2 sonradan ekledim 2den fazla karakter yazınca alt taraf gözüküyor. -->
+  {{ carFilterText }} aradınız.
+</div>
+
+ <!-- BİTTİ AMA DÜZGÜN ÇALIŞMIYO TEKRAR BAK. -->
+
+<div class="container">
+  <form *ngIf="dataLoaded == true" class="row filterArea">
+    <div class="divider div-transparent div-arrow-down mb-4"></div>
+    <div class="row mb-3">
+
+      <div  class="col-md-4"  >
+        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="carFilterText"
+          class="form-control" placeholder="Model adı giriniz">
+      </div>
+
+      <div class="col-md-3">
+            <div  *ngIf="dataLoaded == true"  >
+                <select #fastBrand [ngModelOptions]="{standalone: true}" [(ngModel)]="brandFilterText" class="form-select" aria-label="Marka adı"  >
+                  <option value="" disabled selected>Marka Seçiniz</option>
+                  <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
+                </select>
+            </div>
+      </div>
+
+      <div class="col-md-3">
+        <div #fastColor *ngIf="dataLoaded == true">
+          <div >
+            <select [ngModelOptions]="{standalone: true}" [(ngModel)]="colorFilterText" class="form-select" aria-label="Renk adı">
+              <option value="" disabled selected>Renk Seçiniz</option>
+              <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div  class="col-md-1" >
+        <div >
+          <button (click)="getCarsByFilter(filterBrandId,filterColorId)"  type="submit" class="btn btn-primary mb-2 mb-lg-12">Filtrele</button> 
+        </div>
+      </div>
+      <div class="col-md-1">
+        <div >
+          <button (click)="getCars()" type="submit"  class="filtreTemizle"
+          class="btn btn-danger mb-2 mb-lg-12 ">Temizle</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div> 
+
+
+
+
+
+
+
+<table class="table">
+  <thead>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div
+        class="col"
+        *ngFor="let car of cardetails | filterPipe : carFilterText"
+      >
+        <!-- filtreyi listenin kendisine uyguladığımız için buraya yazıyoruz -->
+        <div class="card h-100">
+          <img
+            routerLink="/cars/cardetail/{{ car.carId }}"
+            *ngIf="car.imagePath"
+            [src]="baseUrl + car.imagePath"
+            class="card-img-top"
+            style="object-fit: cover"
+            width="100"
+            height="50%"
+          />
+
+          <img
+            *ngIf="!car.imagePath"
+            [src]="
+              baseUrl + '43240aa0-afe8-400e-9463-ed8d9ed2068b_5_29_2023.jpg'
+            "
+            class="card-img-top"
+            style="object-fit: cover"
+            width="100"
+            height="50%"
+          />
+
+          <div class="card-body">
+            <h3
+              routerLink="/cars/cardetail/{{ car.carId }}"
+              style="cursor: pointer"
+              class="card-title text-center"
+            >
+              {{ car.brandName + " " + car.modelName }}
+            </h3>
+          </div>
+          <ul class="list-group list-group-flush text-center text-bolder">
+            <li class="list-group-item">
+              <i><b>Renk</b></i> | {{ car.colorName }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Model Yılı</b></i> | {{ car.modelYear }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Günlük Fiyat</b></i> |
+              {{ car.dailyPrice | currency : "₺ " }}
+            </li>
+            <li class="list-group-item">
+              <i><b>Kdv'li Fiyat</b></i> |
+              {{ car.dailyPrice | vatAdded : 18 | currency : "₺ " }}
+              <!-- pipe örneği vatAdded piipe açıyon -->
+            </li>
+            <li class="list-group-item">
+              <i><b>Aylık Fiyat %20 indirimli</b></i>
+              {{ car.dailyPrice * 30 * 0.8 | currency : "₺" }}
+            </li>
+          </ul>
+          <div  class="card-footer">
+            <div class="row"> 
+              <button type="button" class="btn btn-success" routerLink="/cars/update/{{ car.carId }}" > Düzenleme </button>
+              
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </thead>
+</table>
