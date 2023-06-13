@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'brands/add', component: BrandAddComponent,canActivate:[LoginGuard] },
   { path: 'colors/add', component: ColorAddComponent,canActivate:[LoginGuard] },
   { path: 'rentals', component: RentalComponent },
-  { path: 'rentals/add', component: RentalAddComponent, canActivate:[LoginGuard] },
+  { path: 'rentals/add', component: RentalAddComponent ,canActivate:[LoginGuard]},
   { path: 'payments/pay', component: PayComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

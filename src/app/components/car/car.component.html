@@ -129,15 +129,15 @@
 
 
 
-      <table class="table">
+      <!-- <table class="table">
         <thead>
           <div class="row row-cols-1 row-cols-md-4 g-4">
             <div
               class="col"
               *ngFor="let car of cardetails | filterPipe : carFilterText"
-            >
+            > -->
               <!-- filtreyi listenin kendisine uyguladığımız için buraya yazıyoruz -->
-              <div class="card h-100">
+              <!-- <div class="card h-100">
                 <img
                   routerLink="/cars/cardetail/{{ car.carId }}"
                   *ngIf="car.imagePath"
@@ -182,8 +182,8 @@
                   <li class="list-group-item">
                     <i><b>Kdv'li Fiyat</b></i> |
                     {{ car.dailyPrice | vatAdded : 18 | currency : "₺ " }}
-                    <!-- pipe örneği vatAdded piipe açıyon -->
-                  </li>
+                    pipe örneği vatAdded piipe açıyon -->
+                  <!-- </li>
                   <li class="list-group-item">
                     <i><b>Aylık Fiyat %20 indirimli</b></i>
                     {{ car.dailyPrice * 30 * 0.8 | currency : "₺" }}
@@ -199,7 +199,7 @@
             </div>
           </div>
         </thead>
-      </table>
+      </table> -->
 
 
 

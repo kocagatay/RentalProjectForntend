@@ -10,7 +10,6 @@ import { BrandComponent } from './components/brand/brand.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { ColorComponent } from './components/color/color.component';
-import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
@@ -18,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -42,12 +40,10 @@ import { HomeComponent } from './components/home/home.component';
     NaviComponent,
     CardetailComponent,
     ColorComponent,
-    CustomerComponent,
     RentalComponent,
     CarImageComponent,
     VatAddedPipe,
     FilterPipePipe,
-    CartSummaryComponent,
     ColorFilterPipe,
     BrandFilterPipe,
     CarAddComponent,
