@@ -26,8 +26,8 @@ export class CarComponent implements OnInit {
   imageOfPath: string;
   dataLoaded = false;
   carFilterText = '';
-  brandFilterText = "";
-  colorFilterText = "";
+  brandFilter:number=0;
+  colorFilter:number=0;
 
   filterBrandId: number = 1;
   filterColorId: number = 1;
@@ -51,18 +51,23 @@ export class CarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      //params parametrelerden geliyor.
-      if (params['brandId']) {
-        this.getCarsByBrand(params['brandId']);
-      } else if (params['colorId']) {
-        this.getCarsByColor(params['colorId']);
-      } else {
+    this.activatedRoute.params.subscribe(params=>{
+      if(params["brandId"] && params["colorId"]){
+        this.getCarsByFilter(params["brandId"],params["colorId"])
+      }
+      else if(params["brandId"])
+      {
+        this.getCarsByBrand(params["brandId"]);
+      }
+      else if(params["colorId"]){
+        this.getCarsByColor(params["colorId"]);
+      }
+      else{
         this.getCars();
         this.getBrands();
         this.getColors();
       }
-    });
+    })
     
   }
 
@@ -77,10 +82,11 @@ export class CarComponent implements OnInit {
   }
 
   getCarsByFilter(brandId: number, colorId: number){
-    this.carService.getCarsByFilter(brandId, colorId).subscribe(response => {
+    this.carService.getCarsByBrandAndColor(brandId, colorId).subscribe(response => {
       this.cardetails = response.data;
-      this.dataLoaded = true;
     })
+
+    this.toastrService.success("Araçlar ilgili marka ve renge göre filtrelendi.")
   }
 
 

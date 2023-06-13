@@ -8,10 +8,10 @@
 
 
 
-<div *ngIf="carFilterText.length > 2">
-  <!-- ngif şu satırın bir şey yokken görünmemesini sağlıyor. lenght>2 sonradan ekledim 2den fazla karakter yazınca alt taraf gözüküyor. -->
+<!-- <div *ngIf="carFilterText.length > 2">
+   ngif şu satırın bir şey yokken görünmemesini sağlıyor. lenght>2 sonradan ekledim 2den fazla karakter yazınca alt taraf gözüküyor.
   {{ carFilterText }} aradınız.
-</div>
+</div>  -->
 
  <!-- BİTTİ AMA DÜZGÜN ÇALIŞMIYO TEKRAR BAK. -->
 
@@ -27,19 +27,19 @@
 
       <div class="col-md-3">
             <div  *ngIf="dataLoaded == true"  >
-                <select #fastBrand [ngModelOptions]="{standalone: true}" [(ngModel)]="brandFilterText" class="form-select" aria-label="Marka adı"  >
-                  <option value="" disabled selected>Marka Seçiniz</option>
-                  <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
+                <select [(ngModel)]="brandFilter" class="form-select" name="marka"  >
+                  <option value="1" disabled selected>Marka Seçiniz</option>
+                  <option [value]="brand.brandId" *ngFor="let brand of brands" >{{brand.brandName}}</option>
                 </select>
             </div>
       </div>
 
       <div class="col-md-3">
-        <div #fastColor *ngIf="dataLoaded == true">
+        <div  *ngIf="dataLoaded == true">
           <div >
-            <select [ngModelOptions]="{standalone: true}" [(ngModel)]="colorFilterText" class="form-select" aria-label="Renk adı">
-              <option value="" disabled selected>Renk Seçiniz</option>
-              <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+            <select [(ngModel)]="colorFilter"  [ngModelOptions]="{standalone: true}" class="form-select"  name="marka" >
+              <option value="1" disabled selected>Renk Seçiniz</option>
+              <option [value]="color.colorId" *ngFor="let color of colors" >{{color.colorName}}</option>
             </select>
           </div>
         </div>
