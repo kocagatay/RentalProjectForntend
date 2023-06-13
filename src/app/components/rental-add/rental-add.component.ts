@@ -23,6 +23,7 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalAddComponent implements OnInit {
 
   rentalAddForm: FormGroup;
+  minDate = new Date();
 
   constructor(
     private formBuilder: FormBuilder,

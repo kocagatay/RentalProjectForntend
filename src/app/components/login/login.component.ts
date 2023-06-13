@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit{
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
       let loginModel = Object.assign({},this.loginForm.value)
-
       this.authService.login(loginModel).subscribe(data=>{
         this.toastrService.success(data.message)
         localStorage.setItem("token",data.data.token)

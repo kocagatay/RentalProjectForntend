@@ -13,10 +13,11 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginGuard } from './guards/login.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { HomeComponent } from './components/home/home.component';
 //import { GuardService } from './services/guardservice';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: CarComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'cars', component: CarComponent },
   { path: 'cars/brand/:brandId', component: CarComponent },
   { path: 'cars/color/:colorId', component: CarComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
   { path: 'rentals/add', component: RentalAddComponent, canActivate:[LoginGuard] },
   { path: 'payments/pay', component: PayComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

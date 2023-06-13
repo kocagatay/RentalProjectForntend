@@ -6,7 +6,6 @@ import { CarDetail } from 'src/app/models/cardetail';
 import { CarImage } from 'src/app/models/carimage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CardetailService } from 'src/app/services/cardetail.service';
-import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cardetail',
@@ -21,7 +20,6 @@ export class CardetailComponent implements OnInit {
   constructor(
     private cardetailService: CardetailService,
     private activatedRoute: ActivatedRoute,
-    private cartService: CartService,
     private toastrService: ToastrService
 
   ) {}
@@ -42,6 +40,8 @@ export class CardetailComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
+
+  
 
   
 

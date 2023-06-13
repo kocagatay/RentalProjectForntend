@@ -10,6 +10,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
+
+  baseUrl = 'https://localhost:44354/uploads/images/';
   loginForm : FormGroup;
   constructor(
     private toastrService : ToastrService,
