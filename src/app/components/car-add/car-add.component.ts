@@ -45,11 +45,8 @@ export class CarAddComponent implements OnInit{
           for (let i = 0; i < dataError.error.Errors.length; i++) {
             this.toastrService.error(dataError.error.Errors[i].ErrorMessage,"Doğrulama hatası")
           }
-          
         }
        }
-       
-       
        //dataError=>{
       //   console.log(dataError)
       //   this.toastrService.error(dataError.error) //hatanın nerede olduğunu yakalamak için yazdık örnek koddur.
